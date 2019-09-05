@@ -1,0 +1,32 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+
+(defpackage #:clispi/roswell/clispi.ros
+  (:use #:cl))
+(in-package #:clispi/roswell/clispi.ros)
+
+(ql:quickload '(:clispi) :silent t)
+
+(defun print-usage ()
+  (format *error-output* "~&Usage: clispi command [option...]
+Commands:
+  new APP_PATH [option...]
+"))
+
+(defun command-new (path &rest options)
+  (declare (ignore options))
+  (let ((args nil)
+        (path (uiop:ensure-directory-pathname path)))
+    (apply #'clispi:make-project path args)))
+
+(defun main (&optional command &rest argv)
+  (cond
+    ((equal command "new")
+     (unless (first argv)
+       (print-usage)
+       (uiop:quit -1))
+     (apply #'command-new argv))
+    (t (print-usage))))
