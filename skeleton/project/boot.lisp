@@ -6,8 +6,4 @@
 (in-package #:<% @var name %>)
 
 (defun start ()
-  (setf *loop-escape-flag* t)
   (main))
-
-(defun stop ()
-  (setf *loop-escape-flag* nil))
