@@ -4,7 +4,8 @@
   :author "<% @var author %>"
   :license "<% @var license %>"
   :description "<% @var description %>"
-  :depends-on ("<% @var name %>/boot"
+  :depends-on ("cffi"
+               "<% @var name %>/boot"
                "cl-syntax-annot"))
 
 (register-system-packages "<% @var name %>/boot" '(#:<% @var name %>))
