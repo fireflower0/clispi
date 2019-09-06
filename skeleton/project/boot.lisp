@@ -5,5 +5,9 @@
            #:stop))
 (in-package #:<% @var name %>)
 
-(defun start ()
-  (main))
+(defun start (&rest args)
+  (setf *loop-control-flag* t)
+  (main args))
+
+(defun stop ()
+  (setf *loop-control-flag* nil))
