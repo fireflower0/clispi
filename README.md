@@ -1,14 +1,26 @@
 # clispi
 
-## Dependency
+Framework for electronic work on Raspberry Pi
 
+## Description
+
+A framework that makes it easy to perform electronic work using Common Lisp on Raspberry Pi.
+
+## Requirement
+
+* [Wiringpi](http://wiringpi.com/)
 * [Roswell](https://github.com/roswell/roswell)
 * [qlot](https://github.com/fukamachi/qlot)
+
+## Installation
+
+```
+$ ros install fireflower0/clispi
+```
 
 ## Usage
 
 ```
-$ ros install fireflower0/clispi
 $ clispi new <project name>
 $ cd <project name>
 $ qlot install
@@ -34,10 +46,18 @@ Added the following code
      (delay 500)))             ; Delay 500(ms)
 ```
 
-Start REPL with `M-x slime-qlot-exec`
+Start REPL with `M-x slime-qlot-exec`  
 Run the following in REPL
 
 ```
 (ql:quickload :<project name>)
 (<project name>:start)
 ```
+
+## Author
+
+fireflower0
+
+## License
+
+MIT
