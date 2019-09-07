@@ -15,7 +15,15 @@ A framework that makes it easy to perform electronic work using Common Lisp on R
 ## Installation
 
 ```
-$ ros install fireflower0/clispi
+$ wget https://raw.githubusercontent.com/fireflower0/clispi/master/installer.sh
+$ chmod u+x installer.sh
+$ ./installer.sh
+```
+
+## Update
+
+```
+ros update clispi
 ```
 
 ## Usage
