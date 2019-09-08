@@ -10,7 +10,6 @@ A framework that makes it easy to perform electronic work using Common Lisp on R
 
 * [Wiringpi](http://wiringpi.com/)
 * [Roswell](https://github.com/roswell/roswell)
-* [qlot](https://github.com/fukamachi/qlot)
 
 ## Installation
 
@@ -21,15 +20,20 @@ ros install fireflower0/clispi
 ## Update
 
 ```
-ros update clispi
+$ wget https://raw.githubusercontent.com/fireflower0/clispi/master/installer.sh
+$ chmod u+x installer.sh
+$ ./installer.sh
+$ source .bashrc
 ```
 
 ## Usage
 
 ```
+$ cd .roswell/local-projects/
+$ mkdir <user name>
+$ cd <user name>
 $ clispi new <project name>
 $ cd <project name>
-$ qlot install
 ```
 
 ## Example
@@ -52,7 +56,12 @@ Added the following code
      (delay 500)))             ; Delay 500(ms)
 ```
 
-Start REPL with `M-x slime-qlot-exec`  
+Start REPL
+
+```
+$ ros run
+```
+
 Run the following in REPL
 
 ```
