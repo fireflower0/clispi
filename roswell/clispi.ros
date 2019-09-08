@@ -21,11 +21,7 @@ Commands:
   (let ((args nil)
         (path (uiop:ensure-directory-pathname path)))
     (apply #'clispi:make-project path args)
-
-    (format t "~&$ qlot install~%")
-    (uiop:run-program (format nil "cd '~A' && qlot install" path)
-                      :output *standard-output*
-                      :error-output *error-output*)))
+    (ql:register-local-projects)))
 
 (defun main (&optional command &rest argv)
   (cond
