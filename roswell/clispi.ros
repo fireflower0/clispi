@@ -10,11 +10,36 @@ exec ros -Q -- $0 "$@"
 
 (ql:quickload '(:clispi) :silent t)
 
-(defun print-usage ()
-  (format *error-output* "~&Usage: clispi command [option...]
-Commands:
-  new APP_PATH [option...]
-"))
+(defconstant +print-version+ "clispi version 0.0.1")
+(defconstant +print-usage+
+"~A
+A framework that makes it easy to perform electronic work using Common Lisp on Raspberry Pi.
+
+ +--------------------------------------------------+
+ | + + + + + + + + + + + + + + + + + + + +    +-------+
+ | + + + + + + + + + + + + + + + + + + + +    |       |
+ |                                        + + |       |
+ | +-+      +--------+ +------+    +---+  + + |       |
+ | | |      |+------+| |      |    |   |      +-------+
+ | | |      ||      || |      |    |   |            |
+ | | |      ||      || |      |    +---+            |
+ | | |      |+------+| |      |                +------+
+ | | |      +--------+ +------+      +---+     |      |
+ | | |                        +-+    |   |     |      |
+ | | |                        | |    +---+     +----+-+
+ | | |                        | |                   |
+ | +-+                        | |              +----+-+
+ |                            | |              |      |
+ |                            | | +--+         |      |
+ |    +----+     +--+    +--+ +-+ |  |         +------+
+ +----|    |-----|  |----|  |-----+  +--------------+
+      +----+     +--+    +--+     +--+
+
+Usage: clispi new [project name]
+
+Options:
+  -v, --version   print clispi version
+")
 
 (defun command-new (path &rest options)
   (declare (ignore options))
@@ -27,7 +52,9 @@ Commands:
   (cond
     ((equal command "new")
      (unless (first argv)
-       (print-usage)
        (uiop:quit -1))
      (apply #'command-new argv))
-    (t (print-usage))))
+    ((or (equal command "--version")
+         (equal command "-v"))
+     (format *error-output* +print-version+))
+    (t (format *error-output* +print-usage+ +print-version+))))
