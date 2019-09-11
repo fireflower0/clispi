@@ -73,6 +73,16 @@ Run the following in REPL
 (<project name>:start)
 ```
 
+### Roswell Script
+
+Can also use Roswell Script as follows
+
+```
+cd roswell
+chmod u+x <file name>
+./<file name>
+```
+
 ## Author
 
 fireflower0
