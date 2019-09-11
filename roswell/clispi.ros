@@ -37,6 +37,9 @@ A framework that makes it easy to perform electronic work using Common Lisp on R
 
 Usage: clispi new [project name]
 
+Command:
+  new <project name> : Generate a project
+
 Options:
   -v, --version   print clispi version
 ")
