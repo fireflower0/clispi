@@ -1,0 +1,14 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+
+(uiop:define-package #:<% @var name %>/roswell/<% @var name %>.ros
+  (:use #:cl))
+(in-package #:<% @var name %>/roswell/<% @var name %>.ros)
+
+(ql:quickload '(:<% @var name %>) :silent t)
+
+(defun main (&rest argv)
+  (<% @var name %>:start argv))
