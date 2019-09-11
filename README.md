@@ -79,8 +79,7 @@ Can also use Roswell Script as follows
 
 ```
 cd roswell
-chmod u+x <file name>
-./<file name>
+ros ./<project name>.ros
 ```
 
 ## Author
