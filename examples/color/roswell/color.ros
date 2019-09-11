@@ -1,0 +1,14 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+
+(uiop:define-package #:color/roswell/color.ros
+  (:use #:cl))
+(in-package #:color/roswell/color.ros)
+
+(ql:quickload '(:color) :silent t)
+
+(defun main (&rest argv)
+  (color:start argv))
