@@ -60,6 +60,12 @@ Added the following code
      (delay 500)))             ; Delay 500(ms)
 ```
 
+## Run program
+
+The program can be run in two ways.
+
+### REPL
+
 Start REPL
 
 ```
@@ -78,8 +84,7 @@ Run the following in REPL
 Can also use Roswell Script as follows
 
 ```
-cd roswell
-ros ./<project name>.ros
+ros roswell/<project name>.ros
 ```
 
 ## Author
