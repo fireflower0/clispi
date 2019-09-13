@@ -10,10 +10,9 @@ exec ros -Q -- $0 "$@"
 
 (ql:quickload '(:clispi) :silent t)
 
-(defconstant +print-version+ "clispi version 0.0.1")
+(defconstant +print-version+ "clispi version 0.0.1~%")
 (defconstant +print-usage+
-"~A
-A framework that makes it easy to perform electronic work using Common Lisp on Raspberry Pi.
+"A framework that makes it easy to perform electronic work using Common Lisp on Raspberry Pi.
 
  +--------------------------------------------------+
  | + + + + + + + + + + + + + + + + + + + +    +-------+
@@ -60,4 +59,4 @@ Options:
     ((or (equal command "--version")
          (equal command "-v"))
      (format *error-output* +print-version+))
-    (t (format *error-output* +print-usage+ +print-version+))))
+    (t (format *error-output* +print-usage+))))
