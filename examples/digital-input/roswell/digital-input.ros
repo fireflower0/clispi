@@ -1,0 +1,14 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+
+(uiop:define-package #:digital-input/roswell/digital-input.ros
+  (:use #:cl))
+(in-package #:digital-input/roswell/digital-input.ros)
+
+(ql:quickload '(:digital-input) :silent t)
+
+(defun main (&rest argv)
+  (digital-input:start argv))
