@@ -11,4 +11,5 @@ exec ros -Q -- $0 "$@"
 (ql:quickload '(:color) :silent t)
 
 (defun main (&rest argv)
+  (format t "Program Start! (Exit with C-c) ~%")
   (color:start argv))
