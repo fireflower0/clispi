@@ -11,4 +11,5 @@ exec ros -Q -- $0 "$@"
 (ql:quickload '(:digital-input) :silent t)
 
 (defun main (&rest argv)
+  (format t "Program Start! (Exit with C-c) ~%")
   (digital-input:start argv))
