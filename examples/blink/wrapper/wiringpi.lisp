@@ -34,6 +34,9 @@
 
 (use-foreign-library libwiringPi)
 
+;;; Constant
+;;; ============================================================
+
 ;; Pin mode
 (defconstant +input+      0)
 (defconstant +output+     1)
@@ -48,24 +51,53 @@
 (defconstant +pud-down+ 1)
 (defconstant +pud-up+   2)
 
-;; Init wiringPi
+;;; Setup
+;;; ============================================================
+
+;; wiringPiSetup
+
+;; Init wiringPi GPIO
 (defcfun ("wiringPiSetupGpio" wiringpi-setup-gpio) :int)
+
+;; wiringPiSetupPhys
+
+;; wiringPiSetupSys
+
+;;; Core Function
+;;; ============================================================
 
 ;; GPIO pin mode setting
 (defcfun ("pinMode" pin-mode) :void
   (pin :int) (mode :int))
 
-;; Read the status of the GPIO pin
-(defcfun ("digitalRead" digital-read) :int
-  (pin :int))
+;; Set the state when nothing is connected to the terminal
+(defcfun ("pullUpDnControl" pull-updn-control) :void
+  (pin :int) (pud :int))
 
 ;; Output control of GPIO pin
 (defcfun ("digitalWrite" digital-write) :void
   (pin :int) (value :int))
 
-;; Set the state when nothing is connected to the terminal
-(defcfun ("pullUpDnControl" pull-updn-control) :void
-  (pin :int) (pud :int))
+;; PWM write
+(defcfun ("pwmWrite" pwm-write) :void
+  (pin :int) (value :int))
+
+;; Read the status of the GPIO pin
+(defcfun ("digitalRead" digital-read) :int
+  (pin :int))
+
+;; Analog Read
+(defcfun ("analogRead" analog-read) :int
+  (pin :int))
+
+;; Analog Write
+(defcfun ("analogWrite" analog-write) :void
+  (pin :int) (value :int))
+
+;;; Raspberry Pi Specifics
+;;; ============================================================
+
+;; digitalWriteByte
 
 ;; PWM set mode
 (defcfun ("pwmSetMode" pwm-set-mode) :void
@@ -79,40 +111,29 @@
 (defcfun ("pwmSetClock" pwm-set-clock) :void
   (divisor :int))
 
-;; PWM write
-(defcfun ("pwmWrite" pwm-write) :void
-  (pin :int) (value :int))
+;; piBoardRev
 
-;; Soft PWM Create
-(defcfun ("softPwmCreate" soft-pwm-create) :int
-  (pin :int) (initial-value :int) (pwm-range :int))
+;; wpiPinToGpio
 
-;; Soft PWM Write
-(defcfun ("softPwmWrite" soft-pwm-write) :void
-  (pin :int) (value :int))
+;; physPinToGpio
 
-;; Analog Read
-(defcfun ("analogRead" analog-read) :int
-  (pin :int))
+;; setPadDrive
 
-;; Analog Write
-(defcfun ("analogWrite" analog-write) :void
-  (pin :int) (value :int))
+;;; Timing
+;;; ============================================================
 
-;; Initialization of the I2C systems.
-(defcfun ("wiringPiI2CSetup" wiringpi-i2c-setup) :int
-  (fd :int))
+;; millis
 
-;; Writes 8-bit data to the instructed device register.
-(defcfun ("wiringPiI2CWriteReg8" wiringpi-i2c-write-reg8) :int
-  (fd :int) (reg :int) (data :int))
+;; micros
 
-(defcfun ("wiringPiI2CRead" wiringpi-i2c-read) :int
-  (fd :int))
+;; Delay (millisecond)
+(defcfun ("delay" delay) :void
+  (howlong :uint))
 
-;; It reads the 16-bit value from the indicated device register.
-(defcfun ("wiringPiI2CReadReg16" wiringpi-i2c-read-reg16) :int
-  (fd :int) (reg :int))
+;; delayMicroseconds
+
+;;; SPI Library
+;;; ============================================================
 
 ;; SPI initialization
 (defcfun ("wiringPiSPISetup" wiringpi-spi-setup) :int
@@ -122,6 +143,52 @@
 (defcfun ("wiringPiSPIDataRW" wiringpi-spi-data-rw) :int
   (channel :int) (data :pointer) (len :int))
 
-;; Delay (millisecond)
-(defcfun ("delay" delay) :void
-  (howlong :uint))
+;;; I2C Library
+;;; ============================================================
+
+;; Initialization of the I2C systems.
+(defcfun ("wiringPiI2CSetup" wiringpi-i2c-setup) :int
+  (fd :int))
+
+;; I2C read
+(defcfun ("wiringPiI2CRead" wiringpi-i2c-read) :int
+  (fd :int))
+
+;; I2C write
+
+;; Writes 8-bit data to the instructed device register.
+(defcfun ("wiringPiI2CWriteReg8" wiringpi-i2c-write-reg8) :int
+  (fd :int) (reg :int) (data :int))
+
+;; wiringPiI2CWriteReg16
+
+;; wiringPiI2CReadReg8
+
+;; It reads the 16-bit value from the indicated device register.
+(defcfun ("wiringPiI2CReadReg16" wiringpi-i2c-read-reg16) :int
+  (fd :int) (reg :int))
+
+;;; Shift Library
+;;; ============================================================
+
+;; shiftIn
+
+;; shiftOut
+
+;;; Software PWP Library
+;;; ============================================================
+
+;; Soft PWM Create
+(defcfun ("softPwmCreate" soft-pwm-create) :int
+  (pin :int) (initial-value :int) (pwm-range :int))
+
+;; Soft PWM Write
+(defcfun ("softPwmWrite" soft-pwm-write) :void
+  (pin :int) (value :int))
+
+;;; Software Tone Libraryn
+;;; ============================================================
+
+;; softToneCreate
+
+;; softToneCreate
