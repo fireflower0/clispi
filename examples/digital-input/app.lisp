@@ -1,6 +1,6 @@
 (uiop:define-package #:digital-input/app
   (:use #:cl
-        #:digital-input/wrapper/wiringpi)
+        #:clispi/wiringpi-wrapper)
   (:export #:main))
 (in-package #:digital-input/app)
 

@@ -1,6 +1,6 @@
 (uiop:define-package #:blink/app
   (:use #:cl
-        #:blink/wrapper/wiringpi)
+        #:clispi/wiringpi-wrapper)
   (:export #:main))
 (in-package #:blink/app)
 

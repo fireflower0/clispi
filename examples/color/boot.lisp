@@ -1,6 +1,6 @@
 (uiop:define-package #:color
-    (:use #:cl
-          #:color/app)
+  (:use #:cl
+        #:color/app)
   (:export #:start))
 (in-package #:color)
 

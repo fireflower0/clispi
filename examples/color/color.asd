@@ -5,6 +5,7 @@
   :license ""
   :description ""
   :depends-on ("cffi"
+               "clispi"
                "color/boot"
                "cl-syntax-annot"))
 

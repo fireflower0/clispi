@@ -1,6 +1,6 @@
 (uiop:define-package #:color/app
-    (:use #:cl
-          #:color/wrapper/wiringpi)
+  (:use #:cl
+        #:clispi/wiringpi-wrapper)
   (:export #:main))
 (in-package #:color/app)
 
@@ -12,14 +12,13 @@
 (defparameter *pwm-range* 100)
 
 (defun main (&rest args)
-  ;; GPIO初期化
+  ;; Initialization and Preparation
   (wiringpi-setup-gpio)
-
-  ;; ピンモード設定
   (pin-mode *gpio-17-red*   +output+)
   (pin-mode *gpio-22-blue*  +output+)
   (pin-mode *gpio-27-green* +output+)
 
+  ;; Infinite loop
   (loop
      ;; PWM出力設定
      (soft-pwm-create *gpio-17-red*   *initial-value* *pwm-range*)
