@@ -5,6 +5,7 @@
   :license "<% @var license %>"
   :description "<% @var description %>"
   :depends-on ("cffi"
+               "clispi"
                "<% @var name %>/boot"
                "cl-syntax-annot"))
 

@@ -1,4 +1,4 @@
-(uiop:define-package #:<% @var name %>/wrapper/wiringpi
+(defpackage #:clispi/wiringpi-wrapper
   (:use #:cl #:cffi)
   (:export #:+input+
            #:+output+
@@ -8,25 +8,41 @@
            #:+pud-off+
            #:+pud-down+
            #:+pud-up+
+
+           ;; Setup
            #:wiringpi-setup-gpio
+
+           ;; Core Function
            #:pin-mode
-           #:digital-read
-           #:digital-write
            #:pull-updn-control
+           #:digital-write
+           #:pwm-write
+           #:digital-read
+           #:analog-read
+           #:analog-write
+
+           ;; Raspberry Pi Specifics
            #:pwm-set-mode
            #:pwm-set-range
            #:pwm-set-clock
-           #:pwm-write
-           #:soft-pwm-create
-           #:soft-pwm-write
-           #:wiringpi-i2c-setup
-           #:wiringpi-i2c-write-reg8
-           #:wiringpi-i2c-read
-           #:wiringpi-i2c-read-reg16
+
+           ;; Timing
+           #:delay
+
+           ;; SPI Library
            #:wiringpi-spi-setup
            #:wiringpi-spi-data-rw
-           #:delay))
-(in-package #:<% @var name %>/wrapper/wiringpi)
+
+           ;; I2C Library
+           #:wiringpi-i2c-setup
+           #:wiringpi-i2c-read
+           #:wiringpi-i2c-write-reg8
+           #:wiringpi-i2c-read-reg16
+
+           ;; Software PWM Library
+           #:soft-pwm-create
+           #:soft-pwm-write))
+(in-package #:clispi/wiringpi-wrapper)
 
 (define-foreign-library libwiringPi
   (:unix "libwiringPi.so")

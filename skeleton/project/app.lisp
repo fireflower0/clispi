@@ -1,6 +1,6 @@
 (uiop:define-package #:<% @var name %>/app
   (:use #:cl
-        #:<% @var name %>/wrapper/wiringpi)
+        #:clispi/wiringpi-wrapper)
   (:export #:main))
 (in-package #:<% @var name %>/app)
 
