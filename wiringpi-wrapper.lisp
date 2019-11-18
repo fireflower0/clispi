@@ -44,7 +44,11 @@
 
            ;; Software PWM Library
            #:soft-pwm-create
-           #:soft-pwm-write))
+           #:soft-pwm-write
+
+           ;; Software Tone Library
+           #:soft-tone-create
+           #:soft-tone-write))
 (in-package #:clispi/wiringpi-wrapper)
 
 (define-foreign-library libwiringPi
@@ -214,6 +218,10 @@
 ;;; Software Tone Libraryn
 ;;; ============================================================
 
-;; softToneCreate
+;; This creates a software controlled tone pin
+(defcfun ("softToneCreate" soft-tone-create) :int
+  (pin :int))
 
-;; softToneCreate
+;; This updates the tone frequency value on the given pin.
+(defcfun ("softToneWrite" soft-tone-write) :void
+  (pin :int) (freq :int))
