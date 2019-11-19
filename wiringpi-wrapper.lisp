@@ -22,6 +22,7 @@
            #:analog-write
 
            ;; Raspberry Pi Specifics
+           #:digital-write-byte
            #:pwm-set-mode
            #:pwm-set-range
            #:pwm-set-clock
@@ -120,7 +121,9 @@
 ;;; Raspberry Pi Specifics
 ;;; ============================================================
 
-;; digitalWriteByte
+;; This writes the 8-bit byte supplied to the first 8 GPIO pins
+(defcfun ("digitalWriteByte" digital-write-byte) :void
+  (value :int))
 
 ;; PWM set mode
 (defcfun ("pwmSetMode" pwm-set-mode) :void
