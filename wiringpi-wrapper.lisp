@@ -79,13 +79,16 @@
 ;;; ============================================================
 
 ;; wiringPiSetup
+(defcfun ("wiringPiSetup" wiringpi-setup) :int)
 
 ;; Init wiringPi GPIO
 (defcfun ("wiringPiSetupGpio" wiringpi-setup-gpio) :int)
 
 ;; wiringPiSetupPhys
+(defcfun ("wiringPiSetupPhys" wiringpi-setup-phys) :int)
 
 ;; wiringPiSetupSys
+(defcfun ("wiringPiSetupSys" wiring-pi-setup-sys) :int)
 
 ;;; Core Function
 ;;; ============================================================
