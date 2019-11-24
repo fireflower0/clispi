@@ -31,7 +31,10 @@
            #:pwm-set-clock
 
            ;; Timing
+           #:millis
+           #:micros
            #:delay
+           #:delay-micro-seconds
 
            ;; SPI Library
            #:wiringpi-spi-setup
@@ -155,14 +158,18 @@
 ;;; ============================================================
 
 ;; millis
+(defcfun ("millis" millis) :unsigned-int)
 
 ;; micros
+(defcfun ("micros" micros) :unsigned-int)
 
 ;; Delay (millisecond)
 (defcfun ("delay" delay) :void
   (howlong :uint))
 
 ;; delayMicroseconds
+(defcfun ("delayMicroseconds" delay-micro-seconds) :void
+  (howlong :unsigned-int))
 
 ;;; SPI Library
 ;;; ============================================================
