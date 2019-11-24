@@ -10,7 +10,10 @@
            #:+pud-up+
 
            ;; Setup
+           #:wiringpi-setup
            #:wiringpi-setup-gpio
+           #:wiringpi-setup-phys
+           #:wiringpi-setup-sys
 
            ;; Core Function
            #:pin-mode
@@ -88,7 +91,7 @@
 (defcfun ("wiringPiSetupPhys" wiringpi-setup-phys) :int)
 
 ;; wiringPiSetupSys
-(defcfun ("wiringPiSetupSys" wiring-pi-setup-sys) :int)
+(defcfun ("wiringPiSetupSys" wiringpi-setup-sys) :int)
 
 ;;; Core Function
 ;;; ============================================================
