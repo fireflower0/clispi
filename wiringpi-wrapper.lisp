@@ -147,8 +147,11 @@
   (divisor :int))
 
 ;; piBoardRev
+(defcfun ("piBoardRev" pi-board-rev) :int)
 
 ;; wpiPinToGpio
+(defcfun ("wpiPinToGpio" wpi-pin-to-gpio) :int
+  (wpi-pin :int))
 
 ;; physPinToGpio
 
