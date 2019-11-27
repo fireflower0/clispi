@@ -29,6 +29,10 @@
            #:pwm-set-mode
            #:pwm-set-range
            #:pwm-set-clock
+           #:pi-board-rev
+           #:wpi-pin-to-gpio
+           #:phys-pin-to-gpio
+           #:set-pad-drive
 
            ;; Timing
            #:millis
