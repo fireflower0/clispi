@@ -154,8 +154,12 @@
   (wpi-pin :int))
 
 ;; physPinToGpio
+(defcfun ("physPinToGpio" phys-pin-to-gpio) :int
+  (phys-pin :int))
 
 ;; setPadDrive
+(defcfun ("setPadDrive" set-pad-drive) :void
+  (group :int) (value :int))
 
 ;;; Timing
 ;;; ============================================================
