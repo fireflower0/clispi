@@ -228,8 +228,17 @@
 ;;; ============================================================
 
 ;; shiftIn
+(defcfun ("shiftIn" shift-in) :unsigned-char
+  (d-pin :unsigned-char)
+  (c-pin :unsigned-char)
+  (order :unsigned-char))
 
 ;; shiftOut
+(defcfun ("shiftOut" shift-out) :void
+  (d-pin :unsigned-char)
+  (c-pin :unsigned-char)
+  (order :unsigned-char)
+  (val   :unsigned-char))
 
 ;;; Software PWP Library
 ;;; ============================================================
