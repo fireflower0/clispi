@@ -53,6 +53,10 @@
            #:wiringpi-i2c-read-reg8
            #:wiringpi-i2c-read-reg16
 
+           ;; Shift Library
+           #:shift-in
+           #:shift-out
+
            ;; Software PWM Library
            #:soft-pwm-create
            #:soft-pwm-write
