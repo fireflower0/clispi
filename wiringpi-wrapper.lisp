@@ -42,6 +42,7 @@
 
            ;; Priority, Interrupts and Threads
            #:pi-hi-pri
+           #:wait-for-interrupt
 
            ;; SPI Library
            #:wiringpi-spi-setup
@@ -195,6 +196,10 @@
 ;; Program or Thread Priority
 (defcfun ("piHiPri" pi-hi-pri) :int
   (priority :int))
+
+;; Interrupts
+(defcfun ("waitForInterrupt" wait-for-interrupt) :int
+  (pin :int) (time-out :int))
 
 ;;; SPI Library
 ;;; ============================================================
