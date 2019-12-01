@@ -40,6 +40,9 @@
            #:delay
            #:delay-micro-seconds
 
+           ;; Priority, Interrupts and Threads
+           #:pi-hi-pri
+
            ;; SPI Library
            #:wiringpi-spi-setup
            #:wiringpi-spi-data-rw
@@ -185,6 +188,13 @@
 ;; delayMicroseconds
 (defcfun ("delayMicroseconds" delay-micro-seconds) :void
   (howlong :unsigned-int))
+
+;;; Priority, Interrupts and Threads
+;;; ============================================================
+
+;; Program or Thread Priority
+(defcfun ("piHiPri" pi-hi-pri) :int
+  (priority :int))
 
 ;;; SPI Library
 ;;; ============================================================
