@@ -201,6 +201,16 @@
 (defcfun ("waitForInterrupt" wait-for-interrupt) :int
   (pin :int) (time-out :int))
 
+;; wiringPiISR
+
+;;; Concurrent Processing (multi-threading)
+
+;; piThreadCreate
+
+;; piLock
+
+;; piUnlock
+
 ;;; SPI Library
 ;;; ============================================================
 
