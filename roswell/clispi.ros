@@ -43,10 +43,20 @@ Options:
   -v, --version   print clispi version
 ")
 
+(defun prompt-read (prompt)
+  (format *query-io* "~a: " prompt)
+  (force-output *query-io*)
+  (read-line *query-io*))
+
 (defun command-new (path &rest options)
   (declare (ignore options))
-  (let ((args nil)
-        (path (uiop:ensure-directory-pathname path)))
+  (let* ((author (prompt-read "author"))
+         (license (prompt-read "license (Default: MIT)"))
+         (description (prompt-read "description"))
+         (args (list :author author
+                     :license (if (string= license "") "MIT" license)
+                     :description description))
+         (path (uiop:ensure-directory-pathname path)))
     (apply #'clispi:make-project path args)
     (ql:register-local-projects)))
 

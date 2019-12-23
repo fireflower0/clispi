@@ -2,6 +2,8 @@
 
 ## Description
 
+<% @var description %>
+
 ## Usage
 
 ## Author
