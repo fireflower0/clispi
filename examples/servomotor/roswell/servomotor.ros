@@ -1,0 +1,15 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+
+(uiop:define-package #:servomotor/roswell/servomotor.ros
+  (:use #:cl))
+(in-package #:servomotor/roswell/servomotor.ros)
+
+(ql:quickload '(:servomotor) :silent t)
+
+(defun main (&rest argv)
+  (format t "Program Start! (Exit with C-c) ~%")
+  (servomotor:start argv))
