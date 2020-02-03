@@ -1,0 +1,15 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+
+(uiop:define-package #:7seg/roswell/7seg.ros
+  (:use #:cl))
+(in-package #:7seg/roswell/7seg.ros)
+
+(ql:quickload '(:7seg) :silent t)
+
+(defun main (&rest argv)
+  (format t "Program Start! (Exit with C-c) ~%")
+  (7seg:start argv))
