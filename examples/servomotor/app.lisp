@@ -4,7 +4,7 @@
   (:export #:main))
 (in-package #:servomotor/app)
 
-(defparameter *gpio-24* 18)
+(defparameter *gpio-18* 18)
 (defparameter *pwm-generator* 1024)
 (defparameter *pwm-clock* 375)
 
@@ -15,7 +15,7 @@
 
 (defun main (&rest args)
   (wiringpi-setup-gpio)
-  (pin-mode *gpio-24* +pwm-output+)
+  (pin-mode *gpio-18* +pwm-output+)
   (pwm-set-mode +pwm-mode-ms+)
   (pwm-set-range *pwm-generator*)
   (pwm-set-clock *pwm-clock*)
@@ -26,4 +26,4 @@
        (when (and (>= degree -90) (<= degree 90))
          (let ((move-deg (floor (+ 81 (* (/ 41 90) degree)))))
            (pprint move-deg)
-           (pwm-write *gpio-24* move-deg))))))
+           (pwm-write *gpio-18* move-deg))))))
